@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+  #overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #F8F3E9; /* Rose gold pink */
+    z-index: 1;
+    transition: opacity 0.5s;
+}
+
+#signin-window {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    padding: 20px;
+    background: #ffe4e1; /* Light rose gold pink */
+    box-shadow: 0px 0px 20px rgba(255, 192, 203, 0.4); /* Slightly transparent rose gold pink shadow */
+    border-radius: 5px;
+    text-align: center;
+    transition: opacity 0.5s;
+}
+
+#overlay.show {
+    display: block;
+}
+
+#signin-window.show {
+    opacity: 1;
+}
+
+#close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #333;
+}
+
+form {
+    text-align: center;
+}
+
+h2 {
+    margin: 0;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ffcccb; /* Rose gold pink border */
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+}
+
+input[type="submit"] {
+    background: #F8F3E9; /* Hot pink */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background: #ff1493; /* Darker hot pink on hover */
+}
+
+
+
+    </style>
+</head>
+<body>
+    <div id="overlay">
+        <div id="signin-window">
+            <div id="close-button" onclick="closeSignInWindow()">X</div>
+            <h2>Sign In</h2>
+            <form>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username"><br><br>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password"><br><br>
+
+                <input type="submit" value="Sign In">
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function openSignInWindow() {
+    var overlay = document.getElementById("overlay");
+    var signInWindow = document.getElementById("signin-window");
+    overlay.classList.add("show");
+    signInWindow.classList.add("show");
+}
+
+function closeSignInWindow() {
+    var overlay = document.getElementById("overlay");
+    var signInWindow = document.getElementById("signin-window");
+    overlay.classList.remove("show");
+    signInWindow.classList.remove("show");
+}
+
+window.onload = openSignInWindow;
+
+    </script>
+</body>
+</html>
